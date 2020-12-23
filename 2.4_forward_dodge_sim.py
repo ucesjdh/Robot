@@ -1,4 +1,5 @@
 #combined mission and stop if distance to object < 20cm
+#simulated version which prints only
 
 import RPi.GPIO as GPIO
 import time
@@ -21,38 +22,23 @@ GPIO.setup(BBwd, GPIO.OUT)
 
 #turn all motors off
 def stopmotors():
-    GPIO.output(AFwd, 0)
-    GPIO.output(ABwd, 0)
-    GPIO.output(BFwd, 0)
-    GPIO.output(BBwd, 0)
+    print("stopmotors")
  
 #turn both fwd
 def forwards():
-    GPIO.output(AFwd, 1)
-    GPIO.output(ABwd, 0)
-    GPIO.output(BFwd, 1)
-    GPIO.output(BBwd, 0)
+    print("forwards")
     
 #turn both bwd
 def backwards():
-    GPIO.output(AFwd, 0)
-    GPIO.output(ABwd, 1)
-    GPIO.output(BFwd, 0)
-    GPIO.output(BBwd, 1)
+    print("backwards")
     
 #turn both bwd
 def left():
-    GPIO.output(AFwd, 0)
-    GPIO.output(ABwd, 1)
-    GPIO.output(BFwd, 1)
-    GPIO.output(BBwd, 0)
+    print("left")
     
 #turn both bwd
 def right():
-    GPIO.output(AFwd, 1)
-    GPIO.output(ABwd, 0)
-    GPIO.output(BFwd, 0)
-    GPIO.output(BBwd, 1)
+    print("right")
 
 #define GPIO pins to use on Pi
 pinTrigger = 17
@@ -129,11 +115,14 @@ try:
     
     #repeat next forever
     while True:
-        if avoider(60) is False:
-            backwards()
+        if avoider(20) is False:
+            forwards()
             time.sleep(0.1)
-        if avoider(60) is True:
-            dodger(60)
+        if avoider(20) is True:
+            dodger(10)
+            
+    
+
 
 except KeyboardInterrupt:
     GPIO.cleanup()
