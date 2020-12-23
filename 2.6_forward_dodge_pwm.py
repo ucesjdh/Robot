@@ -7,6 +7,7 @@ import time
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
+
 # define variables for GPIO pins
 AFwd = 10
 ABwd = 9
@@ -16,7 +17,7 @@ BBwd = 7
 #Define how many times to turn the pin on and off per second
 Frequency = 20
 #Define how long the pin stays on each cycle
-DutyCycle = 30
+DutyCycle = 10
 #Setting the duty cycle to 0 means motors will not turn
 Stop = 0
 
@@ -26,13 +27,19 @@ GPIO.setup(ABwd, GPIO.OUT)
 GPIO.setup(BFwd, GPIO.OUT)
 GPIO.setup(BBwd, GPIO.OUT)
 
-#set the GPIO to use PWM at a set Hz
+print("here")
 
+#set the GPIO to use PWM at a set Hz
 pwmAFwd = GPIO.PWM(AFwd,Frequency)
 pwmABwd = GPIO.PWM(ABwd,Frequency)
 pwmBFwd = GPIO.PWM(BFwd,Frequency)
 pwmBBwd = GPIO.PWM(BBwd,Frequency)
 
+#Start the software PWM with a duty cycle of 0 i.e. not moving
+pwmAFwd.start(Stop)
+pwmABwd.start(Stop)
+pwmBFwd.start(Stop)
+pwmBBwd.start(Stop)
 
 # turn all motors off
 def stopmotors():
@@ -44,34 +51,33 @@ def stopmotors():
 
 # turn both fwd
 def forwards():
-    GPIO.output(AFwd, 1)
-    GPIO.output(ABwd, 0)
-    GPIO.output(BFwd, 1)
-    GPIO.output(BBwd, 0)
-
-
+    pwmAFwd.ChangeDutyCycle(DutyCycle)
+    pwmABwd.ChangeDutyCycle(Stop)
+    pwmBFwd.ChangeDutyCycle(DutyCycle)
+    pwmBBwd.ChangeDutyCycle(Stop)
+    
 # turn both bwd
 def backwards():
-    GPIO.output(AFwd, 0)
-    GPIO.output(ABwd, 1)
-    GPIO.output(BFwd, 0)
-    GPIO.output(BBwd, 1)
+    pwmAFwd.ChangeDutyCycle(Stop)
+    pwmABwd.ChangeDutyCycle(DutyCycle)
+    pwmBFwd.ChangeDutyCycle(Stop)
+    pwmBBwd.ChangeDutyCycle(DutyCycle)
 
 
 # turn both bwd
 def left():
-    GPIO.output(AFwd, 0)
-    GPIO.output(ABwd, 1)
-    GPIO.output(BFwd, 1)
-    GPIO.output(BBwd, 0)
+    pwmAFwd.ChangeDutyCycle(Stop)
+    pwmABwd.ChangeDutyCycle(DutyCycle)
+    pwmBFwd.ChangeDutyCycle(DutyCycle)
+    pwmBBwd.ChangeDutyCycle(Stop)
 
 
 # turn both bwd
 def right():
-    GPIO.output(AFwd, 1)
-    GPIO.output(ABwd, 0)
-    GPIO.output(BFwd, 0)
-    GPIO.output(BBwd, 1)
+    pwmAFwd.ChangeDutyCycle(DutyCycle)
+    pwmABwd.ChangeDutyCycle(Stop)
+    pwmBFwd.ChangeDutyCycle(Stop)
+    pwmBBwd.ChangeDutyCycle(DutyCycle)
 
 
 # define GPIO pins to use on Pi
