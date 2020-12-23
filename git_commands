@@ -1,0 +1,9 @@
+# commit to git
+git commit -a 'commit message'
+
+#push origin
+git push origin master
+
+#List all in Git
+git list
+
