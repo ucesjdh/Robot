@@ -4,6 +4,12 @@ git commit -a 'commit message'
 #push origin
 git push origin master
 
-#List all in Git
-git list
+#show git status
+git status
+
+#Get to directory
+cd ~/Robot
+
+#add new file to git
+git add .....
 
