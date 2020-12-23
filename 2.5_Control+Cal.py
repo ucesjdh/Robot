@@ -36,10 +36,10 @@ pwmBBwd = GPIO.PWM(BBwd,Frequency)
 
 # turn all motors off
 def stopmotors():
-    GPIO.output(AFwd, 0)
-    GPIO.output(ABwd, 0)
-    GPIO.output(BFwd, 0)
-    GPIO.output(BBwd, 0)
+    pwmAFwd.ChangeDutyCycle(Stop)
+    pwmABwd.ChangeDutyCycle(Stop)
+    pwmBFwd.ChangeDutyCycle(Stop)
+    pwmBBwd.ChangeDutyCycle(Stop)
 
 
 # turn both fwd
