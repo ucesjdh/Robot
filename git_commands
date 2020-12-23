@@ -1,5 +1,5 @@
 # commit to git
-git commit -a 'commit message'
+git commit -am 'commit message'
 
 #push origin
 git push origin master
