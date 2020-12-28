@@ -17,7 +17,7 @@ BBwd = 7
 #Define how many times to turn the pin on and off per second
 Frequency = 20
 #Define how long the pin stays on each cycle
-DutyCycle = 10
+DutyCycle = 30
 #Setting the duty cycle to 0 means motors will not turn
 Stop = 0
 
@@ -143,7 +143,9 @@ def dodger(DodgeDistance):
     distance = measure()
     while distance < DodgeDistance:
         left()
+        print("dodging left")
         break
+        
 
     # print("dodging measurement: " + str(distance))
 
@@ -158,7 +160,7 @@ try:
     # repeat next forever
     while True:
         if avoider(60) is False:
-            backwards()
+            forwards()
             time.sleep(0.1)
         if avoider(60) is True:
             dodger(60)
