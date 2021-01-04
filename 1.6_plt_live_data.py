@@ -3,6 +3,7 @@ from itertools import count
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+from datetime import datetime
 
 plt.style.use('fivethirtyeight')
 
@@ -10,8 +11,6 @@ x_vals = []
 y_vals = []
 
 index = count()
-
-#plt.plot(x_vals, y_vals)
 
 def animate(i):
     x_vals.append(next(index))
