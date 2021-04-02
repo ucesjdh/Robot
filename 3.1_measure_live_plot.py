@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 import time
 import matplotlib.pylplot as plt
 import numpy as np
-from matplotlib.animation import FuncAnimation
+
 
 
 # define GPIO pins to use on Pi
@@ -57,11 +57,12 @@ def measure():
         distance = distance/2
         
         return distance
-     
-distancearray = np.zeros(10)
-print(distancearray)
+    
+plt.axis[0,100,0,100]    
+
 
 while True:
     print(measure())
+    print(distancearray)
     
     
