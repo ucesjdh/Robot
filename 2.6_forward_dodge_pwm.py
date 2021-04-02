@@ -17,7 +17,7 @@ BBwd = 7
 #Define how many times to turn the pin on and off per second
 Frequency = 20
 #Define how long the pin stays on each cycle
-DutyCycle = 30
+DutyCycle = 60
 #Setting the duty cycle to 0 means motors will not turn
 Stop = 0
 
