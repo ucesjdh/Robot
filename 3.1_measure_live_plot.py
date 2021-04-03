@@ -2,7 +2,7 @@
 
 import RPi.GPIO as GPIO
 import time
-import matplotlib.pylplot as plt
+import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -58,11 +58,12 @@ def measure():
         
         return distance
     
-plt.axis[0,100,0,100]    
+plt.axis(xlim=(0, 100), ylim=(0, 100))
+plt.show()
 
 
-while True:
-    print(measure())
-    print(distancearray)
+#while True:
+    #print(measure())
+     #print(distancearray)
     
     
